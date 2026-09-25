@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: marathon-diary-api
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    kmg.marathondiary.api: DEBUG

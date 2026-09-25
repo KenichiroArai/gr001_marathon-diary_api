@@ -11,25 +11,34 @@ Cursor / Codex / Claude Code など複数ツールで共通利用する。
 
 ## 技術スタック
 
-- 言語 / フレームワーク: （TODO）
-- ビルド / パッケージ管理: （TODO）
-- テスト: （TODO）
+- 言語 / フレームワーク: Java 25 / Spring Boot 4.1.1（Spring MVC）
+- ビルド / パッケージ管理: Maven（`spring-boot-starter-parent` 4.1.1）
+- テスト: JUnit 5 / MockMvc（`spring-boot-starter-webmvc-test`）
 
 ## ディレクトリ構成
 
 ```text
-# TODO: 実際の構成に合わせて更新する
-# src/
-# tests/
+src/main/java/kmg/marathondiary/api/
+  MarathonDiaryApiApplication.java
+  controller/          # REST コントローラ
+  dto/                 # リクエスト / レスポンス
+  exception/           # 例外ハンドリング（統一エラー応答）
+src/main/resources/
+  application.yml
+src/test/java/kmg/marathondiary/api/
 ```
 
 ## ビルド・テスト
 
 ```bash
-# TODO: 実際のコマンドに置き換える
 # 起動:
+mvn spring-boot:run
+
 # テスト:
-# リント:
+mvn test
+
+# パッケージ:
+mvn package
 ```
 
 ## 作業時の原則
