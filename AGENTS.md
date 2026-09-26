@@ -20,6 +20,7 @@ Cursor / Codex / Claude Code など複数ツールで共通利用する。
 ```text
 src/main/java/kmg/marathondiary/api/
   MarathonDiaryApiApplication.java
+  config/              # CORS など Web 設定
   controller/          # REST コントローラ
   dto/                 # リクエスト / レスポンス
   exception/           # 例外ハンドリング（統一エラー応答）
@@ -347,7 +348,8 @@ public class SampleClass {
 - 仕様: `kb001_marathon-diary_doc`
 - ドメイン: `gr001_marathon-diary_domain`
 - DB: `gr001_marathon-diary_db-postgresql`
-- Web: `mk001_marathon-diary_web-vue`
+- Web（Next.js）: `mk001_marathon-diary_web-next`
+- Web（Vue・参考）: `mk001_marathon-diary_web-vue`
 
 ## 参考リンク
 
