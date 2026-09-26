@@ -19,15 +19,15 @@ Cursor / Codex / Claude Code など複数ツールで共通利用する。
 ## ディレクトリ構成
 
 ```text
-src/main/java/kmg/marathondiary/api/
-  MarathonDiaryApiApplication.java
+src/main/java/kmg/gr/gr001/api/
+  Gr001MarathonDiaryApiApplication.java
   config/              # CORS など Web 設定
   controller/          # REST コントローラ
   dto/                 # リクエスト / レスポンス
   exception/           # 例外ハンドリング（統一エラー応答）
 src/main/resources/
   application.yml
-src/test/java/kmg/marathondiary/api/
+src/test/java/kmg/gr/gr001/api/
 ```
 
 ## ビルド・テスト

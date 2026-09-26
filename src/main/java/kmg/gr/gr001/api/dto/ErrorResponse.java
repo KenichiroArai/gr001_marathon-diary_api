@@ -1,4 +1,4 @@
-package kmg.marathondiary.api.dto;
+package kmg.gr.gr001.api.dto;
 
 import java.time.Instant;
 

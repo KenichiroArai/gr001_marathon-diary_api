@@ -46,8 +46,8 @@ GET http://localhost:8080/api/health
 ## ディレクトリ構成
 
 ```text
-src/main/java/kmg/marathondiary/api/
-  MarathonDiaryApiApplication.java
+src/main/java/kmg/gr/gr001/api/
+  Gr001MarathonDiaryApiApplication.java
   config/              # CORS など
   controller/          # REST コントローラ
   dto/                 # リクエスト / レスポンス

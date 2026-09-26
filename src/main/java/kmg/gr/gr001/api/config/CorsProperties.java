@@ -1,4 +1,4 @@
-package kmg.marathondiary.api.config;
+package kmg.gr.gr001.api.config;
 
 import java.util.List;
 

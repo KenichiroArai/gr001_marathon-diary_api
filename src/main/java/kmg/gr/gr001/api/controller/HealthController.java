@@ -1,11 +1,11 @@
-package kmg.marathondiary.api.controller;
+package kmg.gr.gr001.api.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kmg.marathondiary.api.dto.HealthResponse;
+import kmg.gr.gr001.api.dto.HealthResponse;
 
 /**
  * ヘルスチェック用コントローラ

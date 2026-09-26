@@ -1,4 +1,4 @@
-package kmg.marathondiary.api;
+package kmg.gr.gr001.api;
 
 import java.util.Properties;
 
@@ -15,7 +15,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @version 0.1.0
  */
 @SpringBootApplication
-public class MarathonDiaryApiApplication {
+public class Gr001MarathonDiaryApiApplication {
 
     /**
      * エントリポイント
@@ -31,7 +31,7 @@ public class MarathonDiaryApiApplication {
     public static void main(final String[] args) {
 
         // SpringApplicationの設定
-        final SpringApplication application = new SpringApplication(MarathonDiaryApiApplication.class);
+        final SpringApplication application = new SpringApplication(Gr001MarathonDiaryApiApplication.class);
         final Properties        properties  = new Properties();
         application.setDefaultProperties(properties);
 
@@ -44,7 +44,7 @@ public class MarathonDiaryApiApplication {
      *
      * @since 0.1.0
      */
-    public MarathonDiaryApiApplication() {
+    public Gr001MarathonDiaryApiApplication() {
 
         // 処理なし
     }

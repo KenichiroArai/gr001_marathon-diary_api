@@ -1,4 +1,4 @@
-package kmg.marathondiary.api;
+package kmg.gr.gr001.api;
 
 import java.util.Properties;
 
@@ -14,7 +14,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 
 /**
- * MarathonDiaryApiApplication のテスト
+ * Gr001MarathonDiaryApiApplication のテスト
  *
  * @author KenichiroArai
  *
@@ -26,7 +26,7 @@ import org.springframework.context.ConfigurableApplicationContext;
     "nls", "static-method",
 })
 @SpringBootTest
-public class MarathonDiaryApiApplicationTest {
+public class Gr001MarathonDiaryApiApplicationTest {
 
     /**
      * アプリケーションコンテキスト
@@ -39,7 +39,7 @@ public class MarathonDiaryApiApplicationTest {
      *
      * @since 0.1.0
      */
-    public MarathonDiaryApiApplicationTest() {
+    public Gr001MarathonDiaryApiApplicationTest() {
 
         // 処理なし
     }
@@ -57,7 +57,7 @@ public class MarathonDiaryApiApplicationTest {
         /* 準備 */
 
         /* テスト対象の実行 */
-        final MarathonDiaryApiApplication testTarget = new MarathonDiaryApiApplication();
+        final Gr001MarathonDiaryApiApplication testTarget = new Gr001MarathonDiaryApiApplication();
 
         /* 検証の準備 */
 
@@ -75,17 +75,15 @@ public class MarathonDiaryApiApplicationTest {
     public void testContextLoads_normalLoaded() {
 
         /* 期待値の定義 */
-        final boolean expectedLoaded = true;
 
         /* 準備 */
 
         /* テスト対象の実行 */
 
         /* 検証の準備 */
-        final boolean actualLoaded = this.applicationContext != null;
 
         /* 検証の実施 */
-        Assertions.assertEquals(expectedLoaded, actualLoaded, "アプリケーションコンテキストがロードされていません");
+        Assertions.assertNotNull(this.applicationContext, "アプリケーションコンテキストがロードされていません");
 
     }
 
@@ -115,7 +113,7 @@ public class MarathonDiaryApiApplicationTest {
 
             })) {
 
-            MarathonDiaryApiApplication.main(testArgs);
+            Gr001MarathonDiaryApiApplication.main(testArgs);
 
             /* 検証の準備 */
             final int               actualConstructionCount = testMockedConstruction.constructed().size();

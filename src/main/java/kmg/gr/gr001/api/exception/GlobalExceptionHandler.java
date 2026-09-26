@@ -1,4 +1,4 @@
-package kmg.marathondiary.api.exception;
+package kmg.gr.gr001.api.exception;
 
 import java.time.Instant;
 
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
-import kmg.marathondiary.api.dto.ErrorResponse;
+import kmg.gr.gr001.api.dto.ErrorResponse;
 
 /**
  * API 全体の例外を統一エラー応答へ変換するハンドラ

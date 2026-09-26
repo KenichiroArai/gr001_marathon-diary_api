@@ -1,4 +1,4 @@
-package kmg.marathondiary.api.config;
+package kmg.gr.gr001.api.config;
 
 import java.util.List;
 
@@ -118,7 +118,8 @@ public class WebConfigTest {
 
         /* 検証の実施 */
         Assertions.assertEquals(1, actualRegistrations.size(), "CORS 登録数が一致しません");
-        Assertions.assertEquals(expectedAllowedOriginCount, actualAllowedOrigins == null ? 0 : actualAllowedOrigins.size(),
+        Assertions.assertNotNull(actualAllowedOrigins, "許可オリジン一覧が null です");
+        Assertions.assertEquals(expectedAllowedOriginCount, actualAllowedOrigins.size(),
             "許可オリジン数が一致しません");
 
     }

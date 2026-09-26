@@ -1,4 +1,4 @@
-package kmg.marathondiary.api.exception;
+package kmg.gr.gr001.api.exception;
 
 import java.util.Collections;
 import java.util.List;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import kmg.core.infrastructure.model.impl.KmgReflectionModelImpl;
-import kmg.marathondiary.api.dto.ErrorResponse;
+import kmg.gr.gr001.api.dto.ErrorResponse;
 
 /**
  * GlobalExceptionHandler のテスト
@@ -80,7 +80,7 @@ public class GlobalExceptionHandlerTest {
         Assertions.assertEquals(expectedError, actualBody.error(), "エラー種別が一致しません");
         Assertions.assertEquals(expectedMessage, actualBody.message(), "エラーメッセージが一致しません");
         Assertions.assertEquals(expectedPath, actualBody.path(), "リクエストパスが一致しません");
-        Assertions.assertTrue(actualBody.timestamp() != null, "発生時刻が設定されていません");
+        Assertions.assertNotNull(actualBody.timestamp(), "発生時刻が設定されていません");
 
     }
 

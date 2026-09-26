@@ -14,4 +14,4 @@ app:
 logging:
   level:
     root: INFO
-    kmg.marathondiary.api: DEBUG
+    kmg.gr.gr001.api: DEBUG
