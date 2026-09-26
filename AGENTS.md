@@ -13,7 +13,8 @@ Cursor / Codex / Claude Code など複数ツールで共通利用する。
 
 - 言語 / フレームワーク: Java 25 / Spring Boot 4.1.1（Spring MVC）
 - ビルド / パッケージ管理: Maven（`spring-boot-starter-parent` 4.1.1）
-- テスト: JUnit 5 / MockMvc（`spring-boot-starter-webmvc-test`）
+- 基盤ライブラリ: kmg-core / kmg-fund（常時依存）
+- テスト: JUnit 5 / MockMvc（`spring-boot-starter-webmvc-test`）/ JaCoCo 0.8.14（行・分岐 100%）
 
 ## ディレクトリ構成
 
@@ -35,12 +36,16 @@ src/test/java/kmg/marathondiary/api/
 # 起動:
 mvn spring-boot:run
 
-# テスト:
+# テスト（JaCoCo レポート + カバレッジ 100% チェック）:
 mvn test
 
 # パッケージ:
 mvn package
 ```
+
+- カバレッジレポート: `target/site/jacoco/index.html`
+- Eclipse 共有用実行データ: `target/jacoco.exec`
+- 行 / 分岐カバレッジが 100% 未満だと `mvn test` は失敗する
 
 ## 作業時の原則
 
@@ -332,6 +337,7 @@ public class SampleClass {
 - [ ] API 仕様ドキュメントとの整合
 - [ ] 後方互換の確認（破壊的変更時は移行方針）
 - [ ] テストの追加 / 更新（命名・実装順序・検証方法を含む）
+- [ ] `mvn test` で JaCoCo カバレッジ 100% を維持
 - [ ] コーディングルール（戻り値 `result`、早期リターン、処理コメント）の順守
 - [ ] Javadoc の追加 / 更新
 
@@ -350,6 +356,7 @@ public class SampleClass {
 - DB: `gr001_marathon-diary_db-postgresql`
 - Web（Next.js）: `mk001_marathon-diary_web-next`
 - Web（Vue・参考）: `mk001_marathon-diary_web-vue`
+- 基盤: `kmg-core` / `kmg-fund`
 
 ## 参考リンク
 

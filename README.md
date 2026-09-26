@@ -9,21 +9,26 @@
 - Java 25 / Spring Boot 4.1.1
 - Maven
 - REST API（Spring MVC）
+- 基盤ライブラリ: kmg-core / kmg-fund
 
 ## 必要環境
 
 - JDK 25
 - Maven 3.6.3 以降
+- kmg-core / kmg-fund（ローカル `mvn install` または GitHub Packages）
 
 ## ビルド / 起動
 
 ```bash
-# テスト
+# テスト（JaCoCo レポート生成 + 行/分岐カバレッジ 100% チェック）
 mvn test
 
 # 起動
 mvn spring-boot:run
 ```
+
+カバレッジレポートは `target/site/jacoco/index.html` に出力される。
+`target/jacoco.exec` は Eclipse のカバレッジ表示と共有できる。
 
 起動後のヘルスチェック:
 
