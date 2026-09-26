@@ -14,7 +14,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  * @version 0.1.0
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {
+    "kmg.gr.gr001.api", "kmg.gr.gr001.domain",
+})
 public class Gr001MarathonDiaryApiApplication {
 
     /**

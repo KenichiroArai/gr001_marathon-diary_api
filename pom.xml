@@ -45,6 +45,13 @@
             <version>${kmg-fund.version}</version>
         </dependency>
 
+        <!-- Domain -->
+        <dependency>
+            <groupId>kmg.gr.gr001</groupId>
+            <artifactId>gr001_marathon-diary_domain</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+
         <!-- Spring MVC + Tomcat -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
