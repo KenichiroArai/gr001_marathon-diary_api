@@ -4,6 +4,7 @@ import java.util.Properties;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentMatchers;
 import org.mockito.MockedConstruction;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ import org.springframework.context.ConfigurableApplicationContext;
  * @version 0.1.0
  */
 @SuppressWarnings({
-    "nls",
+    "nls", "static-method",
 })
 @SpringBootTest
 public class MarathonDiaryApiApplicationTest {
@@ -48,12 +49,10 @@ public class MarathonDiaryApiApplicationTest {
      *
      * @since 0.1.0
      */
-    @SuppressWarnings("static-method")
     @Test
     public void testConstructor_normal() {
 
         /* 期待値の定義 */
-        final boolean expectedCreated = true;
 
         /* 準備 */
 
@@ -61,10 +60,9 @@ public class MarathonDiaryApiApplicationTest {
         final MarathonDiaryApiApplication testTarget = new MarathonDiaryApiApplication();
 
         /* 検証の準備 */
-        final boolean actualCreated = testTarget != null;
 
         /* 検証の実施 */
-        Assertions.assertEquals(expectedCreated, actualCreated, "インスタンスが生成されていません");
+        Assertions.assertNotNull(testTarget, "インスタンスが生成されていません");
 
     }
 
@@ -96,7 +94,9 @@ public class MarathonDiaryApiApplicationTest {
      *
      * @since 0.1.0
      */
-    @SuppressWarnings("static-method")
+    @SuppressWarnings({
+        "resource", "unused"
+    })
     @Test
     public void testMain_normalRun() {
 
@@ -107,10 +107,10 @@ public class MarathonDiaryApiApplicationTest {
         final String[] testArgs = {};
 
         /* テスト対象の実行 */
-        try (MockedConstruction<SpringApplication> testMockedConstruction = Mockito.mockConstruction(
-            SpringApplication.class, (mock, context) -> {
+        try (MockedConstruction<SpringApplication> testMockedConstruction
+            = Mockito.mockConstruction(SpringApplication.class, (mock, context) -> {
 
-                Mockito.when(mock.run(Mockito.any(String[].class)))
+                Mockito.when(mock.run(ArgumentMatchers.any(String[].class)))
                     .thenReturn(Mockito.mock(ConfigurableApplicationContext.class));
 
             })) {
@@ -118,13 +118,13 @@ public class MarathonDiaryApiApplicationTest {
             MarathonDiaryApiApplication.main(testArgs);
 
             /* 検証の準備 */
-            final int              actualConstructionCount = testMockedConstruction.constructed().size();
-            final SpringApplication actualApplication      = testMockedConstruction.constructed().get(0);
+            final int               actualConstructionCount = testMockedConstruction.constructed().size();
+            final SpringApplication actualApplication       = testMockedConstruction.constructed().get(0);
 
             /* 検証の実施 */
             Assertions.assertEquals(expectedConstructionCount, actualConstructionCount,
                 "SpringApplication の生成回数が一致しません");
-            Mockito.verify(actualApplication).setDefaultProperties(Mockito.any(Properties.class));
+            Mockito.verify(actualApplication).setDefaultProperties(ArgumentMatchers.any(Properties.class));
             Mockito.verify(actualApplication).run(testArgs);
 
         }

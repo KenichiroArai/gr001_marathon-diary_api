@@ -26,6 +26,36 @@ import kmg.marathondiary.api.dto.ErrorResponse;
 public class GlobalExceptionHandler {
 
     /**
+     * エラー種別: Bad Request
+     */
+    @SuppressWarnings("nls")
+    private static final String ERROR_BAD_REQUEST = "Bad Request";
+
+    /**
+     * エラー種別: Internal Server Error
+     */
+    @SuppressWarnings("nls")
+    private static final String ERROR_INTERNAL_SERVER_ERROR = "Internal Server Error";
+
+    /**
+     * エラー種別: Not Found
+     */
+    @SuppressWarnings("nls")
+    private static final String ERROR_NOT_FOUND = "Not Found";
+
+    /**
+     * フィールドエラーの区切り文字
+     */
+    @SuppressWarnings("nls")
+    private static final String FIELD_ERROR_SEPARATOR = ": ";
+
+    /**
+     * 入力検証失敗時のデフォルトメッセージ
+     */
+    @SuppressWarnings("nls")
+    private static final String MESSAGE_VALIDATION_FAILED = "Validation failed";
+
+    /**
      * 統一エラー応答を組み立てる
      *
      * @param status
@@ -39,7 +69,7 @@ public class GlobalExceptionHandler {
      *
      * @return 統一エラー応答
      */
-    private ResponseEntity<ErrorResponse> buildResponse(final HttpStatus status, final String error,
+    private static ResponseEntity<ErrorResponse> buildResponse(final HttpStatus status, final String error,
         final String message, final HttpServletRequest request) {
 
         /* 戻り値の宣言 */
@@ -64,6 +94,7 @@ public class GlobalExceptionHandler {
      *
      * @return 統一エラー応答
      */
+    @SuppressWarnings("static-method")
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleException(final Exception exception, final HttpServletRequest request) {
 
@@ -71,8 +102,8 @@ public class GlobalExceptionHandler {
         final ResponseEntity<ErrorResponse> result;
 
         /* エラー応答の生成 */
-        result = this.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR, "Internal Server Error", exception.getMessage(),
-            request);
+        result = GlobalExceptionHandler.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR,
+            GlobalExceptionHandler.ERROR_INTERNAL_SERVER_ERROR, exception.getMessage(), request);
 
         return result;
 
@@ -88,6 +119,7 @@ public class GlobalExceptionHandler {
      *
      * @return 統一エラー応答
      */
+    @SuppressWarnings("static-method")
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResponse> handleMethodArgumentNotValid(final MethodArgumentNotValidException exception,
         final HttpServletRequest request) {
@@ -97,10 +129,12 @@ public class GlobalExceptionHandler {
 
         /* 先頭の検証メッセージを取得 */
         final String message = exception.getBindingResult().getFieldErrors().stream()
-            .map(error -> error.getField() + ": " + error.getDefaultMessage()).findFirst().orElse("Validation failed");
+            .map(error -> error.getField() + GlobalExceptionHandler.FIELD_ERROR_SEPARATOR + error.getDefaultMessage())
+            .findFirst().orElse(GlobalExceptionHandler.MESSAGE_VALIDATION_FAILED);
 
         /* エラー応答の生成 */
-        result = this.buildResponse(HttpStatus.BAD_REQUEST, "Bad Request", message, request);
+        result = GlobalExceptionHandler.buildResponse(HttpStatus.BAD_REQUEST, GlobalExceptionHandler.ERROR_BAD_REQUEST,
+            message, request);
 
         return result;
 
@@ -116,6 +150,7 @@ public class GlobalExceptionHandler {
      *
      * @return 統一エラー応答
      */
+    @SuppressWarnings("static-method")
     @ExceptionHandler(NoResourceFoundException.class)
     public ResponseEntity<ErrorResponse> handleNoResourceFound(final NoResourceFoundException exception,
         final HttpServletRequest request) {
@@ -124,7 +159,8 @@ public class GlobalExceptionHandler {
         final ResponseEntity<ErrorResponse> result;
 
         /* エラー応答の生成 */
-        result = this.buildResponse(HttpStatus.NOT_FOUND, "Not Found", exception.getMessage(), request);
+        result = GlobalExceptionHandler.buildResponse(HttpStatus.NOT_FOUND, GlobalExceptionHandler.ERROR_NOT_FOUND,
+            exception.getMessage(), request);
 
         return result;
 
