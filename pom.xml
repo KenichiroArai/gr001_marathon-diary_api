@@ -15,8 +15,9 @@
     <groupId>kmg.gr.gr001</groupId>
     <artifactId>gr001_marathon-diary_api</artifactId>
     <version>0.1.0</version>
+    <packaging>jar</packaging>
     <name>gr001_marathon-diary_api</name>
-    <description>マラソン日記の REST API</description>
+    <description>マラソン日記の REST API（Controller / DTO のライブラリ。起動は api-boot で行う）</description>
 
     <properties>
         <java.version>25</java.version>
@@ -74,11 +75,6 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-
             <!-- JUnitテストレポート用 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

@@ -5,9 +5,10 @@ Cursor / Codex / Claude Code など複数ツールで共通利用する。
 
 ## プロジェクト概要
 
-- **役割**: マラソン日記の REST API
+- **役割**: マラソン日記の REST API（Controller / DTO のライブラリ）
 - **含むもの**: HTTP エンドポイント、リクエスト/レスポンス、認証・認可の API 境界
-- **含めないもの**: （記入例: フロントエンド実装、DB マイグレーション本体）
+- **含めないもの**: 起動クラス・`application.yml`（`gr001_marathon-diary_api-boot`）、DB アクセス（`gr001_marathon-diary_db-xxx`）、フロントエンド実装
+- **依存の向き**: 本モジュールは domain にだけ依存し、db-xxx に依存しない（組み立ては api-boot が行う）
 
 ## 技術スタック
 
@@ -20,27 +21,27 @@ Cursor / Codex / Claude Code など複数ツールで共通利用する。
 
 ```text
 src/main/java/kmg/gr/gr001/api/
-  Gr001MarathonDiaryApiApplication.java
   config/              # CORS など Web 設定
   controller/          # REST コントローラ
   dto/                 # リクエスト / レスポンス
   exception/           # 例外ハンドリング（統一エラー応答）
-src/main/resources/
-  application.yml
+  sample/              # サンプル（配線確認用。controller / dto）
 src/test/java/kmg/gr/gr001/api/
+  ApiTestApplication.java   # テスト専用の Spring Boot 設定クラス
+src/test/resources/
+  application.yml           # テスト用設定
 ```
 
 ## ビルド・テスト
 
 ```bash
-# 起動:
-mvn spring-boot:run
-
 # テスト（JaCoCo レポート + カバレッジ 100% チェック）:
 mvn test
 
-# パッケージ:
-mvn package
+# ローカルリポジトリへインストール（api-boot から利用）:
+mvn install
+
+# 起動は gr001_marathon-diary_api-boot で行う
 ```
 
 - カバレッジレポート: `target/site/jacoco/index.html`
@@ -352,6 +353,7 @@ public class SampleClass {
 ## 関連リポジトリ
 
 - 仕様: `kb001_marathon-diary_doc`
+- 起動モジュール: `gr001_marathon-diary_api-boot`
 - ドメイン: `gr001_marathon-diary_domain`
 - DB: `gr001_marathon-diary_db-postgresql`
 - Web（Next.js）: `mk001_marathon-diary_web-next`
